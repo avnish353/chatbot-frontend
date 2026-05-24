@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://chatbot-backend-lqps.onrender.com/api",
+  baseURL: "https://chatbot-backend-lqps.onrender.com",
 });
 
 // --------------------
