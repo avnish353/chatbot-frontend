@@ -8,7 +8,7 @@ function ForgotPassword() {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
+        "https://chatbot-backend-production-fe14.up.railway.app/api/auth/forgot-password",
         { email }
       );
       window.location.href = res.data.reset_link;
