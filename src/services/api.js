@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "chatbot-backend-production-fe14.up.railway.app/api",
+  baseURL: "https://chatbot-backend-production-fe14.up.railway.app/api",
 });
 
 // --------------------
