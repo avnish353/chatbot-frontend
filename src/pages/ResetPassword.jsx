@@ -10,7 +10,7 @@ function ResetPassword() {
   const handleReset = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/auth/reset-password/${token}`,
+        `https://chatbot-backend-production-fe14.up.railway.app/api/auth/reset-password/${token}`,
         { password }
       );
        window.location.href = "/login";
