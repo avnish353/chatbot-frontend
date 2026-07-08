@@ -72,7 +72,7 @@ export const sendMessageToBot = async (message) => {
 export const streamMessageToBot = async (chatId,message, onChunk) => {
   const token = localStorage.getItem("token");
   
-  const res = await fetch("http://localhost:5000/api/chat/stream", {
+  const res = await fetch(`${api.defaults.baseURL}/chat/stream`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
