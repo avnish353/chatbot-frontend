@@ -16,7 +16,7 @@ function LoginPage() {
   try {
     const decoded = jwtDecode(credentialResponse.credential);
 
-    const res = await fetch("http://localhost:5000/api/auth/google-login", {
+    const res = await fetch("https://chatbot-backend-production-fe14.up.railway.app/api/auth/google-login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(decoded),
