@@ -74,13 +74,13 @@ useEffect(() => {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/chat/history/${user.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
+  `https://chatbot-backend-production-fe14.up.railway.app/api/chat/history/${user.id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+);
 
       const merged = res.data.map((c) => ({
             id: c.id,
@@ -231,7 +231,7 @@ const isDifferentDay = (current, previous) => {
     debounceRef.current = setTimeout(async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/admin/suggest-faq?q=${value}`
+          `https://chatbot-backend-production-fe14.up.railway.app/api/admin/suggest-faq?q=${value}`
         );
         setSuggestions(res.data);
       } catch (err) {
@@ -257,14 +257,14 @@ const isDifferentDay = (current, previous) => {
   }
 
       const res = await axios.post(
-        "http://localhost:5000/api/chat/create",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
+  "https://chatbot-backend-production-fe14.up.railway.app/api/chat/create",
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+);
 
       const newChat = {
         id: res.data.chat_id,
