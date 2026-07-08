@@ -58,7 +58,7 @@ function RegisterPage() {
         auth_provider: "google"
       };
 
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch("https://chatbot-backend-production-fe14.up.railway.app/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(googleUser),
