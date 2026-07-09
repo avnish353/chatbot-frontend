@@ -15,7 +15,7 @@ const Admin = () => {
   const fetchFaqs = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/admin/faqs"
+        "https://chatbot-backend-production-fe14.up.railway.app/api/admin/faqs"
       );
 
       setFaqs(res.data);
@@ -35,7 +35,7 @@ const Admin = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/admin/add-faq",
+        "https://chatbot-backend-production-fe14.up.railway.app/api/admin/add-faq",
         {
           question,
           answer,
@@ -61,7 +61,7 @@ const Admin = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/admin/delete-faq/${id}`
+        `https://chatbot-backend-production-fe14.up.railway.app/api/admin/delete-faq/${id}`
       );
 
       fetchFaqs();
@@ -89,7 +89,7 @@ const Admin = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/update-faq/${editId}`,
+        `https://chatbot-backend-production-fe14.up.railway.app/api/admin/update-faq/${editId}`,
         {
           question,
           answer,
