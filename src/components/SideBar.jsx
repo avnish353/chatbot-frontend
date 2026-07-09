@@ -51,7 +51,7 @@ function Sidebar({
   }
 
   const res = await axios.post(
-    "http://localhost:5000/api/chat/create",
+    "https://chatbot-backend-production-fe14.up.railway.app/api/chat/create",
     {},
     {
       headers: {
@@ -88,7 +88,7 @@ const deleteChat = async (e, id) => {
 
     // DELETE FROM BACKEND
     await axios.delete(
-      `http://localhost:5000/api/chat/${id}`,
+      `https://chatbot-backend-production-fe14.up.railway.app/api/chat/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
