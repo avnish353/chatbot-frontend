@@ -184,13 +184,10 @@ const deleteChat = async (e, id) => {
     onClick={(e) => {
       e.stopPropagation();
 
-      setMenuOpenId(
-        menuOpenId === chat.id ? null : chat.id
-      );
+      setMenuOpenId( menuOpenId === chat.id ? null : chat.id);
     }}
-    className="opacity-0 group-hover:opacity-100
-    transition p-2 rounded-lg
-    hover:bg-white/10"
+    className="opacity-100
+    transition p-2 rounded-lg bg-white/10"
   >
     <EllipsisVerticalIcon className="w-5 h-5 text-gray-300" />
   </button>
