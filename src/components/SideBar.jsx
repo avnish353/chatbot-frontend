@@ -187,7 +187,7 @@ const deleteChat = async (e, id) => {
       setMenuOpenId( menuOpenId === chat.id ? null : chat.id);
     }}
     className="opacity-100
-    transition p-2 rounded-lg bg-white/10"
+    transition p-2 rounded-lg"
   >
     <EllipsisVerticalIcon className="w-5 h-5 text-gray-300" />
   </button>
