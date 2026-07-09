@@ -4,6 +4,7 @@ import  deleteLogo  from "../static/images/delete.png";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated, logout } from "../services/auth.js";
 import  { useEffect, useState } from "react";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 function Sidebar({
   chats = [],
@@ -16,6 +17,22 @@ function Sidebar({
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
+  const [menuOpenId, setMenuOpenId] = useState(null);
+
+  useEffect(() => {
+
+  const handleClickOutside = () => {
+    setMenuOpenId(null);
+  };
+
+  window.addEventListener("click", handleClickOutside);
+
+  return () =>
+    window.removeEventListener(
+      "click",
+      handleClickOutside
+    );
+}, []);
 
   useEffect(() => {
      const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -34,7 +51,7 @@ function Sidebar({
   }
 
   const res = await axios.post(
-    "https://chatbot-backend-production-fe14.up.railway.app/api/chat/create",
+    "http://localhost:5000/api/chat/create",
     {},
     {
       headers: {
@@ -71,7 +88,7 @@ const deleteChat = async (e, id) => {
 
     // DELETE FROM BACKEND
     await axios.delete(
-      `https://chatbot-backend-production-fe14.up.railway.app/api/chat/${id}`,
+      `http://localhost:5000/api/chat/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -137,7 +154,7 @@ const deleteChat = async (e, id) => {
         {isAuthenticated() && chats.length > 0 && (
         <div className="px-2 pt-2 pb-3">
           <p className="text-md font-semibold uppercase tracking-widest text-white">
-            Recents
+            Recent Chats
           </p>
         </div>
         )}
@@ -161,12 +178,54 @@ const deleteChat = async (e, id) => {
               {chat.title}
             </span>
 
-            <button
-              onClick={(e) => deleteChat(e, chat.id)}
-              className="opacity-0 group-hover:opacity-100 transition p-1 rounded-md hover:bg-yellow-50 /20"
-            >
-              <img src={deleteLogo} className="w-4 h-4" />
-            </button>
+            <div className="relative">
+
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+
+      setMenuOpenId(
+        menuOpenId === chat.id ? null : chat.id
+      );
+    }}
+    className="opacity-0 group-hover:opacity-100
+    transition p-2 rounded-lg
+    hover:bg-white/10"
+  >
+    <EllipsisVerticalIcon className="w-5 h-5 text-gray-300" />
+  </button>
+
+  {menuOpenId === chat.id && (
+    <div
+      className="absolute right-0 top-8
+      w-40 rounded-xl
+      bg-[#1e293b]
+      border border-white/10
+      shadow-xl
+      z-50"
+    >
+      <button
+        onClick={(e) => {
+          deleteChat(e, chat.id);
+          setMenuOpenId(null);
+        }}
+        className="w-full flex items-center gap-2
+        px-4 py-3
+        hover:bg-red-500/20
+        text-red-400
+        text-sm"
+      >
+        <img
+          src={deleteLogo}
+          className="w-4 h-4"
+        />
+
+        Delete Chat
+      </button>
+    </div>
+  )}
+
+</div>
 
           </div>
         );
