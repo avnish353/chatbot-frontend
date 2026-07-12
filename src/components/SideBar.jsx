@@ -244,9 +244,10 @@ const deleteChat = async (e, id) => {
   )}
 
   {/* AUTH BUTTONS */}
-  <div className="md:hidden flex flex-col gap-2">
+<div className="md:hidden flex flex-col gap-2">
 
-    {isAuthenticated() ? (
+  {isAuthenticated() ? (
+    <>
       <button
         onClick={() => {
           logout();
@@ -260,31 +261,57 @@ const deleteChat = async (e, id) => {
       >
         Logout
       </button>
-    ) : (
-      <>
-        <button
-          onClick={() => navigate("/login")}
-          className="px-4 py-2 rounded-xl text-sm font-medium text-white
-          bg-white/5 border border-white/20
-          hover:bg-white/10
-          transition-all duration-200 active:scale-95"
-        >
-          Login
-        </button>
 
-        <button
-          onClick={() => navigate("/register")}
-          className="px-4 py-2 rounded-xl text-sm font-semibold text-white
-          bg-linear-to-r from-blue-700 to-indigo-700
-          hover:from-blue-600 hover:to-indigo-700
-          shadow-md hover:shadow-blue-500/30
-          transition-all duration-200 active:scale-95"
-        >
-          Signup
-        </button>
-      </>
-    )}
-  </div>
+      {/* Admin Login */}
+      <button
+        onClick={() => navigate("/admin/login")}
+        className="px-4 py-2 rounded-xl text-sm font-semibold text-white
+        bg-linear-to-r from-purple-600 to-violet-700
+        hover:from-purple-700 hover:to-violet-800
+        shadow-md hover:shadow-purple-500/30
+        transition-all duration-200 active:scale-95"
+      >
+        Admin Login
+      </button>
+    </>
+  ) : (
+    <>
+      <button
+        onClick={() => navigate("/login")}
+        className="px-4 py-2 rounded-xl text-sm font-medium text-white
+        bg-white/5 border border-white/20
+        hover:bg-white/10
+        transition-all duration-200 active:scale-95"
+      >
+        Login
+      </button>
+
+      {/* Admin Login */}
+      <button
+        onClick={() => navigate("/admin-login")}
+        className="px-4 py-2 rounded-xl text-sm font-semibold text-white
+        bg-linear-to-r from-purple-600 to-violet-700
+        hover:from-purple-700 hover:to-violet-800
+        shadow-md hover:shadow-purple-500/30
+        transition-all duration-200 active:scale-95"
+      >
+        Admin Login
+      </button>
+
+      <button
+        onClick={() => navigate("/register")}
+        className="px-4 py-2 rounded-xl text-sm font-semibold text-white
+        bg-linear-to-r from-blue-700 to-indigo-700
+        hover:from-blue-600 hover:to-indigo-700
+        shadow-md hover:shadow-blue-500/30
+        transition-all duration-200 active:scale-95"
+      >
+        Signup
+      </button>
+    </>
+  )}
+
+</div>
 
   <p className="text-xs text-gray-500 text-center pt-2">
     AI Chat System v2
