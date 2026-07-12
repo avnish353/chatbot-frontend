@@ -264,7 +264,7 @@ const deleteChat = async (e, id) => {
 
       {/* Admin Login */}
       <button
-        onClick={() => navigate("/admin/login")}
+        onClick={() => navigate("/admin-login")}
         className="px-4 py-2 rounded-xl text-sm font-semibold text-white
         bg-linear-to-r from-purple-600 to-violet-700
         hover:from-purple-700 hover:to-violet-800
